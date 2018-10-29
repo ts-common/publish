@@ -6,7 +6,8 @@
   "scripts": {
     "publishtgz": "publishtgz",
     "tsc": "tsc",
-    "test": "tsc && nyc mocha ./dist/test/*.js --reporter mocha-junit-reporter"
+    "test": "tsc && nyc mocha ./dist/test/*.js --reporter mocha-junit-reporter",
+    "prepack": "npm install && tsc"
   },
   "repository": {
     "type": "git",
