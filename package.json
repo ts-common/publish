@@ -1,7 +1,7 @@
 {
   "name": "@ts-common/publish",
   "version": "0.0.0",
-  "description": "A tool to publish NPM packages from a set of .tgz files",
+  "description": "The tool published NPM packages from a set of `.tgz` files.",
   "main": "dist/index.js",
   "scripts": {
     "publishtgz": "publishtgz",
