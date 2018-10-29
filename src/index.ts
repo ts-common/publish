@@ -15,4 +15,4 @@ const traverse = (dir: string) => {
     }
 }
 
-traverse("./")
+traverse("..")

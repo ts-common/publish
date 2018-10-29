@@ -1,13 +1,14 @@
 {
   "name": "@ts-common/publish",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The tool published NPM packages from a set of `.tgz` files.",
   "main": "dist/index.js",
   "scripts": {
     "publishtgz": "tsc && node ./bin/publishtgz",
     "tsc": "tsc",
     "test": "tsc && nyc mocha ./dist/test/*.js --reporter mocha-junit-reporter",
-    "prepack": "npm install && tsc"
+    "prepack": "npm install && tsc",
+    "publishall": "npm install && tsc && node dist/index.js"
   },
   "repository": {
     "type": "git",
