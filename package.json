@@ -4,6 +4,7 @@
   "description": "A tool to publish NPM packages from a set of .tgz files",
   "main": "dist/index.js",
   "scripts": {
+    "publishtgz": "publishtgz",
     "tsc": "tsc",
     "test": "tsc && nyc mocha ./dist/test/*.js --reporter mocha-junit-reporter"
   },
@@ -20,8 +21,11 @@
     "dist/index.d.ts",
     "dist/index.d.ts.map",
     "src/index.ts",
-    "bin/publish.js",
+    "bin/publishtgz"
   ],
+  "bin": {
+    "publishtgz": "./bin/publishtgz"
+  },
   "author": "Sergey Shandar",
   "license": "Apache-2.0",
   "bugs": {
