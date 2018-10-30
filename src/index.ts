@@ -24,13 +24,15 @@ const traverse = async (dir: string): Promise<void> => {
             const packageJson = files[0]
             const { name, version } = JSON.parse(packageJson.data.toString()) as Package
             const id = `${name}@${version}`
-            const viewNames = child_process.execSync(`npm view ${id} name`).toString().split("\n")
-            if (viewNames[0] != name) {
+            let viewNames: string = ""
+            try {
+                viewNames = child_process.execSync(`npm view ${id} name`).toString()
+            } catch (e) { }
+            if (viewNames == "") {
                 console.log(`publishing ${id} from ${filePath}`)
                 try {
                     child_process.execSync(`npm publish ${filePath} --access=public`)
                 } catch (e) {
-                    console.error(e)
                     process.exitCode = 1
                 }
             } else {
