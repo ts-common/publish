@@ -27,7 +27,12 @@ const traverse = async (dir: string): Promise<void> => {
             const viewNames = child_process.execSync(`npm view ${id} name`).toString().split("\n")
             if (viewNames[0] != name) {
                 console.log(`publishing ${id} from ${filePath}`)
-                child_process.execSync(`npm publish ${filePath} --access=public`)
+                try {
+                    child_process.execSync(`npm publish ${filePath} --access=public`)
+                } catch (e) {
+                    console.error(e)
+                    process.exitCode = 1
+                }
             } else {
                 console.log(`${id} from ${filePath} is skipped`)
             }
