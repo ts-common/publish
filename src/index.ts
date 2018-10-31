@@ -8,12 +8,14 @@ interface Package {
     readonly version: string
 }
 
-const traverse = async (dir: string): Promise<void> => {
+type Action = "publish"|"unpublish"
+
+const traverse = async (dir: string, action: Action): Promise<void> => {
     const files = fs.readdirSync(dir, { withFileTypes: true })
     for (const file of files) {
         const filePath = path.join(dir, file.name)
         if (file.isDirectory()) {
-            traverse(filePath)
+            traverse(filePath, action)
         } else if (path.extname(file.name) === ".tgz") {
             const files = await decompress(
                 filePath,
@@ -28,18 +30,32 @@ const traverse = async (dir: string): Promise<void> => {
             try {
                 viewNames = child_process.execSync(`npm view ${id} name`).toString()
             } catch (e) { }
-            if (viewNames == "") {
-                console.log(`publishing ${id} from ${filePath}`)
-                try {
-                    child_process.execSync(`npm publish ${filePath} --access=public`)
-                } catch (e) {
-                    process.exitCode = 1
+            const exist = viewNames != ""
+            if (action == "publish") {
+                if (!exist) {
+                    console.log(`publishing ${id} from ${filePath}`)
+                    try {
+                        child_process.execSync(`npm publish ${filePath} --access=public`)
+                    } catch (e) {
+                        process.exitCode = 1
+                    }
+                } else {
+                    console.log(`${id} from ${filePath} is skipped`)
                 }
             } else {
-                console.log(`${id} from ${filePath} is skipped`)
+                if (exist) {
+                    console.log(`unpublishing ${id} from ${filePath}`)
+                    try {
+                        child_process.execSync(`npm unpublish ${filePath}`)
+                    } catch (e) {
+                        process.exitCode = 1
+                    }
+                } else {
+                    console.log(`${id} from ${filePath} is skipped`)
+                }
             }
         }
     }
 }
 
-traverse("..")
+traverse("..", process.argv.indexOf("unpublish") >= 0 ? "unpublish" : "publish")

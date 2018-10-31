@@ -8,7 +8,8 @@
     "tsc": "tsc",
     "test": "tsc && nyc mocha ./dist/test/*.js --reporter mocha-junit-reporter",
     "prepack": "npm install && tsc",
-    "publishall": "npm install && tsc && node dist/index.js"
+    "publishall": "npm install && tsc && node dist/index.js",
+    "unpublishall": "npm install && tsc && node dist/index.js unpublish"
   },
   "repository": {
     "type": "git",
