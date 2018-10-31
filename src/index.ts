@@ -46,7 +46,7 @@ const traverse = async (dir: string, action: Action): Promise<void> => {
                 if (exist) {
                     console.log(`unpublishing ${id} from ${filePath}`)
                     try {
-                        child_process.execSync(`npm unpublish ${filePath}`)
+                        child_process.execSync(`npm unpublish ${id}`)
                     } catch (e) {
                         process.exitCode = 1
                     }
