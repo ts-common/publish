@@ -59,6 +59,7 @@ const traverse = async (dir: string, action: Action): Promise<void> => {
             }
         }
     }
+    console.log("@ts-common/publish is dones")
 }
 
 traverse("..", process.argv.indexOf("unpublish") >= 0 ? "unpublish" : "publish")
