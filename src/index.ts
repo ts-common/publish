@@ -11,6 +11,9 @@ interface Package {
 type Action = "publish"|"unpublish"
 
 const traverse = async (dir: string, action: Action): Promise<void> => {
+    console.log("@ts-common/publish is started")
+    const cwd = path.resolve("./")
+    console.log(`current folder: ${cwd}`)
     const files = fs.readdirSync(dir, { withFileTypes: true })
     for (const file of files) {
         const filePath = path.join(dir, file.name)
