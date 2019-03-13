@@ -37,8 +37,10 @@ const traverse = async (dir: string, action: Action): Promise<void> => {
                 if (!exist) {
                     const fullPath = path.resolve(filePath)
                     console.log(`publishing ${id} from ${fullPath}`)
+                    const cmd = `npm publish ${fullPath} --access=public`
+                    console.log(`running: ${cmd}`)
                     try {
-                        child_process.execSync(`npm publish ${fullPath} --access=public`)
+                        child_process.execSync(cmd)
                         console.log(`${id} done.`)
                     } catch (e) {
                         process.exitCode = 1
