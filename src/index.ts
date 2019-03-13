@@ -29,7 +29,9 @@ const traverse = async (dir: string, action: Action): Promise<void> => {
             let viewNames: string = ""
             try {
                 viewNames = child_process.execSync(`npm view ${id} name`).toString()
-            } catch (e) { }
+            } catch (e) {
+                console.error(`"npm view ${id} name" is failed`)
+            }
             const exist = viewNames != ""
             if (action == "publish") {
                 if (!exist) {
@@ -40,7 +42,7 @@ const traverse = async (dir: string, action: Action): Promise<void> => {
                         console.log(`${id} done.`)
                     } catch (e) {
                         process.exitCode = 1
-                        console.log(`${id} failed.`)
+                        console.error(`${id} failed.`)
                     }
                 } else {
                     console.log(`${id} from ${filePath} is skipped`)
