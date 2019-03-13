@@ -33,9 +33,10 @@ const traverse = async (dir: string, action: Action): Promise<void> => {
             const exist = viewNames != ""
             if (action == "publish") {
                 if (!exist) {
-                    console.log(`publishing ${id} from ${filePath}`)
+                    const fullPath = path.resolve(filePath)
+                    console.log(`publishing ${id} from ${fullPath}`)
                     try {
-                        child_process.execSync(`npm publish ${filePath} --access=public`)
+                        child_process.execSync(`npm publish ${fullPath} --access=public`)
                         console.log(`${id} done.`)
                     } catch (e) {
                         process.exitCode = 1
@@ -60,8 +61,8 @@ const traverse = async (dir: string, action: Action): Promise<void> => {
     }
 }
 
-console.log("@ts-common/publish is started")
-const cwd = path.resolve("./")
-console.log(`current folder: ${cwd}`)
+// console.log("@ts-common/publish is started")
+// const cwd = path.resolve("./")
+// console.log(`current folder: ${cwd}`)
 traverse("..", process.argv.indexOf("unpublish") >= 0 ? "unpublish" : "publish")
-console.log("@ts-common/publish is done")
+// console.log("@ts-common/publish is done")
