@@ -36,8 +36,10 @@ const traverse = async (dir: string, action: Action): Promise<void> => {
                     console.log(`publishing ${id} from ${filePath}`)
                     try {
                         child_process.execSync(`npm publish ${filePath} --access=public`)
+                        console.log(`${id} done.`)
                     } catch (e) {
                         process.exitCode = 1
+                        console.log(`${id} failed.`)
                     }
                 } else {
                     console.log(`${id} from ${filePath} is skipped`)
