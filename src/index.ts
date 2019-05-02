@@ -28,8 +28,8 @@ const traverse = async (dir: string, action: Action, auto: boolean): Promise<voi
             const { name, version, autoPublish } = JSON.parse(packageJson.data.toString()) as Package
             const id = `${name}@${version}`
 
-            if (auto && autoPublish === true) {
-                console.log(`skipping ${id} because autoPublish property is set to true`)
+            if (auto && autoPublish !== true) {
+                console.log(`skipping ${id} because autoPublish property is set to false`)
                 continue;
             }
 
