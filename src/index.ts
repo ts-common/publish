@@ -47,8 +47,7 @@ const traverse = async (dir: string, action: Action, auto: boolean): Promise<voi
                     const cmd = `npm publish "${fullPath}" --access=public`
                     console.log(`running: ${cmd}`)
                     try {
-                        console.log(`WHATIF: ${cmd}`)
-                        // child_process.execSync(cmd)
+                        child_process.execSync(cmd)
                         console.log(`${id} done.`)
                     } catch (e) {
                         process.exitCode = 1
@@ -61,8 +60,7 @@ const traverse = async (dir: string, action: Action, auto: boolean): Promise<voi
                 if (exist) {
                     console.log(`unpublishing ${id} from ${filePath}`)
                     try {
-                        console.log(`WHATIF: npm unpublish ${id}`)
-                        // child_process.execSync(`npm unpublish ${id}`)
+                        child_process.execSync(`npm unpublish ${id}`)
                     } catch (e) {
                         process.exitCode = 1
                     }
