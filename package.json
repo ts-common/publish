@@ -10,7 +10,6 @@
     "prepack": "npm install && tsc",
     "publishall": "npm install && tsc && node dist/index.js",
     "publishall:auto": "npm install && tsc && node dist/index.js auto",
-    "specialname": "npm install && tsc && node dist/index.js",
     "unpublishall": "npm install && tsc && node dist/index.js unpublish"
   },
   "repository": {
