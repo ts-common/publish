@@ -29,7 +29,7 @@ const traverse = async (dir: string, action: Action, auto: boolean): Promise<voi
             const id = `${name}@${version}`
 
             if (auto && autoPublish !== true) {
-                console.log(`skipping ${id} because autoPublish property is set to false`)
+                console.log(`skipping ${id} because autoPublish property is set to false or is missing`)
                 continue;
             }
 
