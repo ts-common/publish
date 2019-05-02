@@ -9,7 +9,7 @@
     "test": "tsc && nyc mocha ./dist/test/*.js --reporter mocha-junit-reporter",
     "prepack": "npm install && tsc",
     "publishall": "npm install && tsc && node dist/index.js",
-    "specialname": "npm install && tsc && node dist/index.js",
+    "publishall:auto": "npm install && tsc && node dist/index.js auto",
     "unpublishall": "npm install && tsc && node dist/index.js unpublish"
   },
   "repository": {
