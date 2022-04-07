@@ -44,7 +44,7 @@ const traverse = async (dir: string, action: Action, auto: boolean): Promise<voi
                 if (!exist) {
                     const fullPath = path.resolve(filePath)
                     console.log(`publishing ${id} from ${fullPath}`)
-                    const cmd = `npm publish "${fullPath}" --access=public`
+                    const cmd = `npm publish "${fullPath}" --access=public --tag beta`
                     console.log(`running: ${cmd}`)
                     try {
                         child_process.execSync(cmd)
