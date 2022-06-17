@@ -11,7 +11,7 @@ interface Package {
 
 type Action = "publish"|"unpublish"
 
-const traverse = async (dir: string, action: Action, auto: boolean): Promise<void> => {
+const traverse = async (dir: string, action: Action, auto: boolean, tag?: string): Promise<void> => {
     const files = fs.readdirSync(dir, { withFileTypes: true })
     for (const file of files) {
         const filePath = path.join(dir, file.name)
@@ -44,7 +44,7 @@ const traverse = async (dir: string, action: Action, auto: boolean): Promise<voi
                 if (!exist) {
                     const fullPath = path.resolve(filePath)
                     console.log(`publishing ${id} from ${fullPath}`)
-                    const cmd = `npm publish "${fullPath}" --access=public`
+                    const cmd = `npm publish "${fullPath}" --access=public${tag ? " --tag " + tag :""}`
                     console.log(`running: ${cmd}`)
                     try {
                         child_process.execSync(cmd)
@@ -77,5 +77,7 @@ const traverse = async (dir: string, action: Action, auto: boolean): Promise<voi
 // console.log(`current folder: ${cwd}`)
 const action = process.argv.indexOf("unpublish") >= 0 ? "unpublish" : "publish"
 const autoPublish = process.argv.indexOf("auto") >= 0
-traverse("..", action, autoPublish)
+const tagIndex = process.argv.indexOf("tag")
+const tag = tagIndex >= 0 ? process.argv[tagIndex] : undefined
+traverse("..", action, autoPublish, tag)
 // console.log("@ts-common/publish is done")
