@@ -1,6 +1,6 @@
 {
   "name": "@ts-common/publish",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "The tool published NPM packages from a set of `.tgz` files.",
   "main": "dist/index.js",
   "scripts": {
@@ -39,15 +39,15 @@
   "devDependencies": {
     "@types/decompress": "^4.2.4",
     "@types/mocha": "^10.0.0",
-    "@types/node": "^18.8.2",
-    "chai": "^4.3.6",
-    "mocha": "^10.0.0",
-    "mocha-junit-reporter": "^2.1.0",
+    "@types/node": "^18.11.9",
+    "chai": "^4.3.7",
+    "mocha": "^10.1.0",
+    "mocha-junit-reporter": "^2.2.0",
     "nyc": "^15.1.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.3"
   },
   "dependencies": {
     "decompress": "^4.2.1",
-    "tslib": "^2.4.0"
+    "tslib": "^2.4.1"
   }
 }
