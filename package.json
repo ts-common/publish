@@ -1,6 +1,6 @@
 {
   "name": "@ts-common/publish",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "The tool published NPM packages from a set of `.tgz` files.",
   "main": "dist/index.js",
   "scripts": {
@@ -37,17 +37,17 @@
   },
   "homepage": "https://github.com/ts-common/publish#readme",
   "devDependencies": {
-    "@types/decompress": "^4.2.4",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "^18.15.3",
-    "chai": "^4.3.7",
+    "@types/decompress": "^4.2.6",
+    "@types/mocha": "^10.0.3",
+    "@types/node": "^20.8.10",
+    "chai": "^4.3.10",
     "mocha": "^10.2.0",
-    "mocha-junit-reporter": "^2.2.0",
+    "mocha-junit-reporter": "^2.2.1",
     "nyc": "^15.1.0",
-    "typescript": "^4.9.5"
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "decompress": "^4.2.1",
-    "tslib": "^2.5.0"
+    "tslib": "^2.6.2"
   }
 }
